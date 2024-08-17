@@ -40,13 +40,11 @@ You don't need a perfect defense; you just need: **Cost to attack > Value.**
 
 ## Part 1
 
-Exploits:
-
 ### 1. Exploit 
 
-In `zookd.c` we can exploit a buffer overflow in the `reqpath`
+In `zookd.c` the `reqpath` buffer can be exploited
 
-```
+```c
 // zookd.c > process_client 
 char reqpath[4096];
 
@@ -56,13 +54,45 @@ if ((errmsg = http_request_line(fd, reqpath, env, &env_len)))
 
 In the `url_decode` the contents from the path `sp1` are moved into `reqpath`, without size validation
 
-```
+```c
 url_decode(reqpath, sp1);
 ```
 
-We can pass a big path to explore this vulnerability
+We can pass a big path to exploit this vulnerability
+
+### 2. Exploit
+
+In `http.c` the `value` and `envvar` buffers can be exploited
+
+```c
+const char *http_request_headers(int fd)
+{
+    static char buf[8192];      /* static variables are not on the stack */
+    int i;
+    char value[512];
+    char envvar[512];
+```
+
+The `envvar` buffer has 512 bytes and buf 8192 bytes
+
+```c
+    /* Store header in env. variable for application code */
+    /* Some special headers don't use the HTTP_ prefix. */
+    if (strcmp(buf, "CONTENT_TYPE") != 0 &&
+        strcmp(buf, "CONTENT_LENGTH") != 0) {
+        sprintf(envvar, "HTTP_%s", buf);
+        setenv(envvar, value, 1);
+    } else {
+        setenv(buf, value, 1);
+    }
+```
+
+We can pass a big header to exploit this vulnerability
 
 
+- In `http.c` the `pn` buffer can't be exploited by a buffer overflow but maybe 
+we can use other techniques to get file access
+- In `http.c` environment variables are set based on HTTP headers this can be very dangerous 
 
 
 
