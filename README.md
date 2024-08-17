@@ -1,7 +1,7 @@
 # 6.858 Spring 2022 
 
-- [https://css.csail.mit.edu/6.858/2022/](Website 6.858 / Spring 2022)
-- [https://www.youtube.com/watch?v=073D9t3ltEw](Video Lectures)
+- (Website 6.858 / Spring 2022)[https://css.csail.mit.edu/6.858/2022]
+- (Video Lectures)[https://www.youtube.com/watch?v=073D9t3ltEw]
 
 # Introduction
 
