@@ -13,7 +13,7 @@ into making the assigments
 > (e.g., by checking your solutions into a public repository on GitHub). 
 > This helps keep the labs fair and interesting for students in future years.
 
-# Introduction
+# Lecture 1: Introduction
 
 **Security**: The system works despite an adversary.
 
@@ -42,12 +42,67 @@ Bugs, social engineering, guessing passwords, stealing laptops, monitoring netwo
 - **Defense**: Consider all possible attacks.
 - **Attack**: Find one successful attack.
 
-You don't need a perfect defense; you just need: **Cost to attack > Value.**
+You don't need a perfect defense you just need: **Cost to attack > Value.**
 
-**Convenience, usability, and sharing** vs. **Security.**
+Convenience, usability, and sharing vs Security
 
-# Smashing the stack in the 21st Century 
+# Lecture 2: Security architecture
 
-https://www.youtube.com/watch?v=cJDRShqtTbk
+- Prevent known attacks
+- Prevent unknown attacks
+- Limited damage
+
+- Trust
+- Isolation
+- Authentication
+- Access control
+- Insider attacks
+
+Web Traffic
+
+| Google frontend | 
+
+|VM Customer|-|VM|-|VM Gmail|
+|---------------------------|
+|           Server          | 
+
+VMs, linux containers, language sandbox, kernel sandbox, different machines
+
+- Assurance
+- Cost
+- Performance
+- Combatibility
+
+## Isolation
+
+```
+                                     [Fishy codec]
+                                  [   WASM runtime    ]
+  [KMS]             [Gmail] [Cloud app] [   Google photos   ]
+ [Linux]      [     Linux kernel + Virtual machine monitor  ]
+[Server]    [                   Server                      ]
+```
+
+## Sharing
+
+Reference monitor
+
+1. Authentication 
+2. Authorization 
+3. Audit
+
+Authenticate person
+- Passwords (2FA)
+
+Authenticate computer
+- Keys and signatures
+
+Authorization
+
+Rows: ACLs
+Columns: Capabilities
+
+
+
 
 
