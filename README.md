@@ -48,9 +48,13 @@ Convenience, usability, and sharing vs Security
 
 # Lecture 2: Security architecture
 
+## Goals
+
 - Prevent known attacks
 - Prevent unknown attacks
 - Limited damage
+
+## Features
 
 - Trust
 - Isolation
@@ -58,13 +62,11 @@ Convenience, usability, and sharing vs Security
 - Access control
 - Insider attacks
 
-Web Traffic
 
-| Google frontend | 
-
-|VM Customer|-|VM|-|VM Gmail|
-|---------------------------|
-|           Server          | 
+```
+~ Web Traffic -> [ Google frontend ] -> [VM Customer] [VM] [VM Gmail]
+                                        [           Server          ]
+```
 
 VMs, linux containers, language sandbox, kernel sandbox, different machines
 
@@ -76,31 +78,29 @@ VMs, linux containers, language sandbox, kernel sandbox, different machines
 ## Isolation
 
 ```
-                                     [Fishy codec]
-                                  [   WASM runtime    ]
-  [KMS]             [Gmail] [Cloud app] [   Google photos   ]
- [Linux]      [     Linux kernel + Virtual machine monitor  ]
-[Server]    [                   Server                      ]
+                                                        [ Fishy codec ]
+                                                      [  WASM runtime  ]
+        [KMS]               [ Gmail ] [ Cloud app ] [   Google photos   ]
+    [Linux kernal]        [     Linux kernel + Virtual machine monitor  ]
+[       Server      ]    [                   Server                      ]
 ```
 
 ## Sharing
-
-Reference monitor
 
 1. Authentication 
 2. Authorization 
 3. Audit
 
-Authenticate person
+### Authenticate person
 - Passwords (2FA)
 
-Authenticate computer
+### Authenticate computer
 - Keys and signatures
 
-Authorization
+### Authorization
 
-Rows: ACLs
-Columns: Capabilities
+- Rows: ACLs
+- Columns: Capabilities
 
 
 
