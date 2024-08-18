@@ -64,8 +64,8 @@ Convenience, usability, and sharing vs Security
 
 
 ```
-~ Web Traffic -> [ Google frontend ] -> [VM Customer] [VM] [VM Gmail]
-                                        [           Server          ]
+~ Web Traffic -> [ Google frontend ] ->  [VM Customer] [VM] [VM Gmail]
+                                        [            Server           ]
 ```
 
 VMs, linux containers, language sandbox, kernel sandbox, different machines
@@ -81,8 +81,8 @@ VMs, linux containers, language sandbox, kernel sandbox, different machines
                                                         [ Fishy codec ]
                                                       [  WASM runtime  ]
         [KMS]               [ Gmail ] [ Cloud app ] [   Google photos   ]
-    [Linux kernal]        [     Linux kernel + Virtual machine monitor  ]
-[       Server      ]    [                   Server                      ]
+    [Linux kernal]        [     Linux kernel + Virtual machine monitor   ]
+[       Server      ]    [                   Server                       ]
 ```
 
 ## Sharing
@@ -101,6 +101,16 @@ VMs, linux containers, language sandbox, kernel sandbox, different machines
 
 - Rows: ACLs
 - Columns: Capabilities
+
+For security, having a single source of truth for permissions is much better than having it spread across multiple services.
+
+## DDOS
+
+Real requests vs Fake requests
+
+1. Overprovision
+2. Authenticate
+
 
 
 
